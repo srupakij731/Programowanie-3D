@@ -1,5 +1,6 @@
 #define _USE_MATH_DEFINES
 #include <iostream>
+
 //1.Program obliczaj¹cy sredni¹ artmetyczn¹
 void task1() 
 {
@@ -62,7 +63,7 @@ void task6()
 	std::cout << "podaj wysokoœæ trójk¹ta\n";
 	std::cin >> triangleHeightFromUser;
 
-	std::cout << "a^2+b^2 wynosi " << (triangleBaseFromUser, triangleHeightFromUser)/2;
+	std::cout << "a^2+b^2 wynosi " << (triangleBaseFromUser, triangleHeightFromUser)/2.0;
 }
 //7. Program obliczaj¹cy objêtoœæ kuli o promieniu r
 void task7()
@@ -104,12 +105,13 @@ void task9()
 	std::cout << "podaj wage 3 liczby\n";
 	std::cin >> thirdNumberWeightFromUser;
 
-	double FirstPartOfWeightedAverage = (firstNumberFromUser * firstNumberWeightFromUser) + (secondNumberFromUser * secondNumberWeightFromUser) + (thirdNumberFromUser * thirdNumberWeightFromUser));
-	double WeightedAverage = FirstPartOfWeightedAverage/((firstNumberWeightFromUser + secondNumberWeightFromUser + thirdNumberWeightFromUser);
+	double FirstPartOfWeightedAverage = (firstNumberFromUser * firstNumberWeightFromUser) + (secondNumberFromUser * secondNumberWeightFromUser) + (thirdNumberFromUser * thirdNumberWeightFromUser);
+	double WeightedAverage = FirstPartOfWeightedAverage/((firstNumberWeightFromUser + secondNumberWeightFromUser + thirdNumberWeightFromUser));
 	std::cout << "œrednia wa¿ona tych liczb wynosi " << WeightedAverage;
 }
 int main()
 {
+	setlocale(LC_CTYPE, "Polish");
 	task9();
 
 
