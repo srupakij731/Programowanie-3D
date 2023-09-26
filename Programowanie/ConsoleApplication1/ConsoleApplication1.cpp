@@ -90,7 +90,7 @@ void task8()
 }
 //9. Program obliczaj¹cy œredni¹ wa¿on¹ trzech liczb z podanymi odpowiednimi wagami w1, w2 i w3.
 void task9()
-{a
+{
 	double firstNumberFromUser, secondNumberFromUser, thirdNumberFromUser,
 		firstNumberWeightFromUser, secondNumberWeightFromUser, thirdNumberWeightFromUser;
 	std::cout << "Podaj 1 liczbe\n";
