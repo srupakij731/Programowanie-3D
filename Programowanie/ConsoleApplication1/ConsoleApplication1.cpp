@@ -2,6 +2,7 @@
 #include <iostream>
 
 //1.Program obliczaj¹cy sredni¹ artmetyczn¹
+
 void task1()
 {
 	double firstNumberFromUser, secondNumberFromUser;
