@@ -105,11 +105,11 @@
 
          if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
          {
-             if (day > 0 && day <= 28)
+             if (day > 0 && day <= 29)
                  return true;
          }
          else
-             if (day > 0 && day <= 29)
+             if (day > 0 && day <= 28)
                  return true;
      }
      else
