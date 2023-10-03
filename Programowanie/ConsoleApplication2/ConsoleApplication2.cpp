@@ -103,14 +103,15 @@
      else if (month == 2)
      {
 
-         if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+         if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) //rok przestêpny
          {
              if (day > 0 && day <= 29)
                  return true;
          }
+         else if (day > 0 && day <= 28)
+             return true;
          else
-             if (day > 0 && day <= 28)
-                 return true;
+             return false;
      }
      else
          return false;
