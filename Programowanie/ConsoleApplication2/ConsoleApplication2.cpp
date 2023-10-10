@@ -139,6 +139,8 @@
  void task8()
  {
      double numberFromUser;
+
+     std::cout << "poadaj numer";
      std::cin >> numberFromUser;
      if(numberFromUser >= 1 || numberFromUser < 15)
          std::cout << "liczba jest z przedia³u <1;15";
@@ -149,6 +151,7 @@
  {
      int AgeFromUser;
 
+     std::cout << "Podaj wiek";
      std::cin >> AgeFromUser;
      if (AgeFromUser <18)
          std::cout << "osoba pe³noletnia";
@@ -160,8 +163,11 @@
  {
      double sideFromUser1, sideFromUser2, sideFromUser3;
 
+     std::cout << "podaj 1 bok trójk¹ta";
      std::cin >> sideFromUser1;
+     std::cout << "podaj 2 bok trójk¹ta";
      std::cin >> sideFromUser2;
+     std::cout << "podaj 3 bok trójk¹ta";
      std::cin >> sideFromUser3;
      if(sideFromUser1 + sideFromUser2 > sideFromUser3 && sideFromUser1 + sideFromUser3 > sideFromUser2 && sideFromUser2 + sideFromUser3 > sideFromUser1)
          std::cout << "mo¿na zrobiæ trójk¹t";
