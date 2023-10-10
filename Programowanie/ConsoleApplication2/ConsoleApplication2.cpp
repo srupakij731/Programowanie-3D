@@ -164,13 +164,14 @@
      std::cin >> sideFromUser2;
      std::cin >> sideFromUser3;
      if(sideFromUser1 + sideFromUser2 > sideFromUser3 && sideFromUser1 + sideFromUser3 > sideFromUser2 && sideFromUser2 + sideFromUser3 > sideFromUser1)
-         std::cout << "mo¿na zrobiæ trujk¹t";
+         std::cout << "mo¿na zrobiæ trójk¹t";
  }
+
+ 
 int main()
 {
     setlocale(LC_CTYPE, "polish");
     
-
     task6();
 }
 
