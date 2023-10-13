@@ -103,6 +103,7 @@
          daysInMonth[1] = 29;
      if (day > daysInMonth[month - 1])
          return false;
+     return true;
  }
  void task6()
  {
@@ -173,11 +174,71 @@
          std::cout << "mo¿na zrobiæ trójk¹t";
  }
 
- 
+ void task11() {
+     int actionChoice;
+     double numberFromUser1, numberFromUser2;
+     std::cout << "Podaj 1 numer";
+     std::cin >> numberFromUser1;
+     std::cout << "Podaj 2 numer";
+     std::cin >> numberFromUser2;
+
+     std::cout << "1 -- dodawanie \n 2 -- odejmonaie \n 3-- mno¿enie \n 4-- dzielenie \n";
+     std::cin >> actionChoice;
+
+     switch (actionChoice)
+     {
+     case 1:
+         std::cout << "dodawanie liczb wynosi: " << numberFromUser1 + numberFromUser2;
+         break;
+     case 2:
+         std::cout << "odejmoanie liczb wynosi: " << numberFromUser1 - numberFromUser2;
+         break;
+
+     case 3:
+         std::cout << "mno¿enie liczb wynosi: " << numberFromUser1 * numberFromUser2;
+         break;
+
+     case 4:
+         std::cout << "dzielenie liczb wynosi: " << numberFromUser1 / numberFromUser2;
+         break;
+     }
+ }
+ void task12() {
+     int monthNumber;
+
+     std::cout << "podaj numer mieis¹ca";
+     std::cin >> monthNumber;
+     std::string Month[] = { "Styczeñ", "Luty", "Marzec", "Kwiecieñ", "Maj", "Czerwiec", "Lipiec", "Sierpieñ" , "Wrzesieñ", "PaŸdziernik", "Listopad", "Grudzieñ" };
+
+     if (monthNumber > 12 ||monthNumber <1)
+         std::cout << "niepoprawny numer";
+     else
+         std::cout << "ten miesi¹c to" << Month[monthNumber -1];
+ }
+
+ void task13() {
+     double a, b, c , x1, x2, delta;
+     if (a != 0) {
+         delta = pow(b, 2) - (4 * a * c);
+         if (delta > 0) 
+         {
+             x1 = (-b) - (sqrt(delta)) / (2 * a);
+             x2 = (-b) + (sqrt(delta)) / (2 * a);
+             std::cout << "pierwsze miejsce 0 wynosi" << x1 << "drugie miejsce 0 wynosi" << x2;
+         }
+         else if (delta == 0)
+         {
+             x1 = (-b) / (2 * a);
+             std::cout << "jedyne miejsce 0 wynosi" << x1;
+         }
+         else
+             std::cout << "nie ma miejsc zerowych" << x1;
+     }
+ }
 int main()
 {
     setlocale(LC_CTYPE, "polish");
     
-    task6();
+    task11();
 }
 
