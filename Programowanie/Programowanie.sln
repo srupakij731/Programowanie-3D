@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Instrukcje Decyzyjne", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleApplication2", "ConsoleApplication2\ConsoleApplication2.vcxproj", "{D0AA1FEB-AF93-482C-8F37-F5E4353805E8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tic Tac Toe", "Tic Tac Toe", "{265231D2-F39D-4CB2-93CF-08D33555EF92}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tic Tac Toe", "Tic Tac Toe\Tic Tac Toe.vcxproj", "{8D14DBD2-F132-43A8-88AB-C05BD93EF698}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -35,6 +39,14 @@ Global
 		{D0AA1FEB-AF93-482C-8F37-F5E4353805E8}.Release|x64.Build.0 = Release|x64
 		{D0AA1FEB-AF93-482C-8F37-F5E4353805E8}.Release|x86.ActiveCfg = Release|Win32
 		{D0AA1FEB-AF93-482C-8F37-F5E4353805E8}.Release|x86.Build.0 = Release|Win32
+		{8D14DBD2-F132-43A8-88AB-C05BD93EF698}.Debug|x64.ActiveCfg = Debug|x64
+		{8D14DBD2-F132-43A8-88AB-C05BD93EF698}.Debug|x64.Build.0 = Debug|x64
+		{8D14DBD2-F132-43A8-88AB-C05BD93EF698}.Debug|x86.ActiveCfg = Debug|Win32
+		{8D14DBD2-F132-43A8-88AB-C05BD93EF698}.Debug|x86.Build.0 = Debug|Win32
+		{8D14DBD2-F132-43A8-88AB-C05BD93EF698}.Release|x64.ActiveCfg = Release|x64
+		{8D14DBD2-F132-43A8-88AB-C05BD93EF698}.Release|x64.Build.0 = Release|x64
+		{8D14DBD2-F132-43A8-88AB-C05BD93EF698}.Release|x86.ActiveCfg = Release|Win32
+		{8D14DBD2-F132-43A8-88AB-C05BD93EF698}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +54,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2958E053-4146-41DD-94EE-D47F13649B19} = {ECAD6C6A-79BC-432F-A351-273E7FD7CF69}
 		{D0AA1FEB-AF93-482C-8F37-F5E4353805E8} = {F49F60F7-C622-4AA1-A7F5-5D85906B28D9}
+		{8D14DBD2-F132-43A8-88AB-C05BD93EF698} = {265231D2-F39D-4CB2-93CF-08D33555EF92}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {049CE54E-E25A-4E2F-91E6-848838ECF4A9}
