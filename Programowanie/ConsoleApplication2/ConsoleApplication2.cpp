@@ -217,22 +217,30 @@
  }
 
  void task13() {
-     double a, b, c , x1, x2, delta;
+     double a, b, c , delta;
+     std::cout << "Podaj a";
+     std::cin >> a;
+     std::cout << "Podaj b";
+     std::cin >> b;
+     std::cout << "Podaj c";
+     std::cin >> c;
      if (a != 0) {
          delta = pow(b, 2) - (4 * a * c);
          if (delta > 0) 
          {
+             double x1, x2;
              x1 = (-b) - (sqrt(delta)) / (2 * a);
              x2 = (-b) + (sqrt(delta)) / (2 * a);
              std::cout << "pierwsze miejsce 0 wynosi" << x1 << "drugie miejsce 0 wynosi" << x2;
          }
          else if (delta == 0)
          {
-             x1 = (-b) / (2 * a);
-             std::cout << "jedyne miejsce 0 wynosi" << x1;
+             double x;
+             x = (-b) / (2 * a);
+             std::cout << "jedyne miejsce 0 wynosi" << x;
          }
          else
-             std::cout << "nie ma miejsc zerowych" << x1;
+             std::cout << "nie ma miejsc zerowych";
      }
  }
 int main()
