@@ -1,8 +1,19 @@
 #include <iostream>
 #include <vector>
+#include "Player.h"
+
+int playerTypeF(int number, int playersNumber)
+{
+        int type;
+
+        std::cout << "\nPodaj typ " << number+1 << " gracza \n 1--- Cz³owiek"
+            "\n 2--- AI Proste"
+            "\n 3--- AI trude\n";
+        std::cin >> type;
+        return type; 
+}
 
 int ascii = 62;
-
 char playerMark(int playerNumber) {
     char mark;
 
@@ -22,73 +33,35 @@ char playerMark(int playerNumber) {
     return mark;
 }
 
-void printBoard(const std::vector<std::vector<char>>& board) {
-    for (int i = 0; i < board.size(); i++) {
-        for (int j = 0; j < board[i].size(); j++) {
-            std::cout << board[i][j];
-            if (j < board[i].size() - 1)
-                std::cout << "|";
-        }
-        std::cout << "\n";
-        if (i < board.size() - 1)
-            for (int j = 0; j < board[i].size() * 2 - 1; j++) {
-                std::cout << "-";
-            }
-
-        std::cout << "\n";
-    }
-    std::cout << "\n";
-}
-
-bool move(std::vector<std::vector<char>>& board, int row, int col, char player, int k) {
-    if (row >= 0 && row < board.size() && col >= 0 && col < board.size() && board[row][col] == ' ') {
-        board[row][col] = player;
-        return true;
-    }
-    return false;
-}
-
-int main() {
-    setlocale(LC_CTYPE, "Polish");
+    int main() {
+        setlocale(LC_CTYPE, "Polish");
 
 
-    int ascii = 62;
-    int boardLength, playerNumber;
-    std::cout << "Podaj wielkoœæ planszy\n";
-    std::cin >> boardLength;
-    std::cout << "Podaj iloœæ graczy\n";
-    std::cin >> playerNumber;
+        int boardLength, playersNumber;
+        std::cout << "Podaj wielkoœæ planszy\n";
+        std::cin >> boardLength;
+        std::cout << "Podaj iloœæ graczy\n";
+        std::cin >> playersNumber;
 
-    std::vector<std::vector<char>> board(boardLength, std::vector<char>(boardLength, ' '));
+        std::vector<std::vector<char>> board(boardLength, std::vector<char>(boardLength, ' '));
         std::vector<char> player(playersNumber);
         std::vector<Player> playerList;
 
 
-        for (int i = 0; i < playerNumber; i++) //Przypisuje graczÄ… wÅ‚aÅ›ciwoÅ›ci
+        for (int i = 0; i < playersNumber; i++) //Przypisuje gracz¹ w³aœciwoœci
         {
             char mark = playerMark(i);
-            bool isAI = (i == 1);/////////////////////////////  
-
-            Player player(mark, isAI, board);
+            int playerType = playerTypeF(i, playersNumber);
+            Player player(mark, playerType, board);
             playerList.push_back(player);
 
-    for (int i = 0; i < player.size(); i++) {
-        player[i] = playerMark(i);
-    }
-    while (true) {
-        for (int k = 0; k != player.size(); k++) {
-            int col, row;
-            std::cout << "Teraz gracz " << k + 1 << " (" << player[k] << ") Podaj wiersz i kolumnê: \n";
-            printBoard(board);
-
-            std::cin >> row >> col;
-            if (move(board, row - 1, col - 1, player[k], k)) {
-                // tu dodaj sprawdzanie czy gracz wygra
-            }
-            else {
-                std::cout << "Nieprawid³owy ruch. Spróbuj jeszcze raz.\n";
-                k--;
+        }
+        while (true) 
+        {
+            for (int k = 0; k != player.size(); k++) 
+            {
+                playerList[k].Move(k);
             }
         }
     }
-}
+
