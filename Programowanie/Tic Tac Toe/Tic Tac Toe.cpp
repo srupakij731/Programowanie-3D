@@ -60,7 +60,17 @@ int main() {
     std::cin >> playerNumber;
 
     std::vector<std::vector<char>> board(boardLength, std::vector<char>(boardLength, ' '));
-    std::vector<char> player(playerNumber);
+        std::vector<char> player(playersNumber);
+        std::vector<Player> playerList;
+
+
+        for (int i = 0; i < playerNumber; i++) //Przypisuje graczą właściwości
+        {
+            char mark = playerMark(i);
+            bool isAI = (i == 1);/////////////////////////////  
+
+            Player player(mark, isAI, board);
+            playerList.push_back(player);
 
     for (int i = 0; i < player.size(); i++) {
         player[i] = playerMark(i);
