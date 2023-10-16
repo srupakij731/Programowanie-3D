@@ -8,27 +8,73 @@ public:
     char mark;
     int isAI;
 
-
-    void Move(int turn) {
+    void Move(int turn) 
+    {
         switch (isAI)
         {
         case 1:
-            makeMovePlayer(board, mark, turn);
+            makeMovePlayer(turn);
             break;
 
         case 2:
-            makeMoveAiSimple(board, mark);
+
+            makeMoveAiSimple();
             break;
             //case 3:
                 /// tu AI trudne
         }
-
     }
 
-private:
-    std::vector<std::vector<char>>& board;
+    bool checkWin() 
+    {
+        int N = board.size();
 
-    void printBoard(const std::vector<std::vector<char>>& board) {
+        for (int i = 0; i < N; i++) 
+        {
+            bool rowWin = true;
+            bool colWin = true;
+            for (int j = 0; j < N; j++) 
+            {
+                if (board[i][j] != mark) 
+                    rowWin = false;
+                if (board[j][i] != mark) 
+                    colWin = false;
+            }
+            if (rowWin || colWin) 
+            
+                return true;
+        
+
+        bool diagonal1Win = true;
+        bool diagonal2Win = true;
+        for (int i = 0; i < N; i++)
+        {
+            if (board[i][i] != mark)
+                diagonal1Win = false;
+            if (board[i][N - i - 1] != mark) 
+                diagonal2Win = false;
+        }
+        if (diagonal1Win || diagonal2Win) 
+            return true;
+        }
+
+        return false;
+    }
+    bool isBoardFull()
+    {
+        for (int i = 0; i < board.size(); i++)
+        {
+            for (int j = 0; j < board.size(); j++)
+            {
+                if (board[i][j] == ' ')
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    void printBoard() {
+        std::cout << "\n";
         for (int i = 0; i < board.size(); i++) {
             for (int j = 0; j < board[i].size(); j++) {
                 std::cout << board[i][j];
@@ -36,56 +82,58 @@ private:
                     std::cout << "|";
             }
             std::cout << "\n";
-            if (i < board.size() - 1)
+            if (i < board.size() - 1) {
                 for (int j = 0; j < board[i].size() * 2 - 1; j++) {
                     std::cout << "-";
                 }
-
-            std::cout << "\n";
+                std::cout << "\n";
+                
+            }
         }
         std::cout << "\n";
     }
-
-    bool validMove(int row, int col, std::vector<std::vector<char>>& board)
-    {
+    
+private:
+    std::vector<std::vector<char>>& board;
+    bool validMove(int row, int col) {
         if (row >= 0 && row < board.size() && col >= 0 && col < board.size() && board[row][col] == ' ')
             return true;
         else
             return false;
     }
 
-    void makeMoveAiSimple(std::vector<std::vector<char>>& board, char player)
-    {
-        int row, col;
-    backAI:
-        row = rand() % board.size();
-        col = rand() % board.size();
-        if (validMove(row, col, board))
-            board[row][col] = player;
-        else
-            goto backAI;
+    void makeMoveAiSimple() {
+        std::cout << "---------------------------------------\n";
 
+        std::cout << "ruch AI ( "<<mark<<" )\n";
+
+        int row, col;
+        do {
+            row = rand() % board.size();
+            col = rand() % board.size();
+        } while (!validMove(row, col));
+        board[row][col] = mark;
+        printBoard();
     }
 
-    void makeMovePlayer(std::vector<std::vector<char>>& board, char player, int turn)
-    {
+    void makeMovePlayer(int turn) {
         int row, col;
+        std::cout << "---------------------------------------\n";
+
         std::cout << "Teraz gracz " << turn + 1 << " (" << mark << ") Podaj wiersz i kolumnê: \n";
-        printBoard(board);
-    backPlayer:
-        std::cin >> row >> col;
-        --row; --col;
+        printBoard();
 
-        if (validMove(row, col, board))
+        do 
         {
-            board[row][col] = player;
-            printBoard(board);
-        }
-        else
-        {
-            std::cout << "ruch niepoprawny spróbuj jeszcze raz";
-            goto backPlayer;
-        }
+            std::cout << "wiersz = ";
+            std::cin >> row;
+            std::cout << "kolumna = ";
+            std::cin >> col;
+            --row;--col;
+        } while (!validMove(row, col));
 
+        board[row][col] = mark;
+        printBoard();
     }
 };
+ 

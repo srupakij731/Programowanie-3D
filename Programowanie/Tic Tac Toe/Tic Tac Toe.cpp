@@ -43,24 +43,32 @@ char playerMark(int playerNumber) {
         std::cout << "Podaj iloœæ graczy\n";
         std::cin >> playersNumber;
 
-        std::vector<std::vector<char>> board(boardLength, std::vector<char>(boardLength, ' '));
-        std::vector<char> player(playersNumber);
+        std::vector<std::vector<char>> board(boardLength, std::vector<char>(boardLength, ' '));// vektor tworz¹cy planesze
         std::vector<Player> playerList;
 
 
         for (int i = 0; i < playersNumber; i++) //Przypisuje gracz¹ w³aœciwoœci
         {
-            char mark = playerMark(i);
-            int playerType = playerTypeF(i, playersNumber);
-            Player player(mark, playerType, board);
+            Player player(playerMark(i), playerTypeF(i, playersNumber), board);
             playerList.push_back(player);
-
         }
-        while (true) 
+        while (true) //Powtarzanie dopóki ktoœ nie wygra
         {
-            for (int k = 0; k != player.size(); k++) 
+            for (int k = 0; k != playersNumber; k++) //Faktyczna gra
             {
                 playerList[k].Move(k);
+                if (playerList[k].checkWin())
+                {
+
+                    std::cout << "gracz " << k + 1 << "( " << playerList[k].mark << " ) wygral!!!!!\n";
+                    playerList[k].printBoard();
+                    return 0;
+                }
+                else if (playerList[k].isBoardFull())
+                {
+                    std::cout << "plansza jest pelna. remis!!";
+                    return 0;
+                }
             }
         }
     }
