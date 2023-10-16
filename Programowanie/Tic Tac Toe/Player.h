@@ -106,9 +106,10 @@ private:
         std::cout << "---------------------------------------\n";
 
         std::cout << "ruch AI ( "<<mark<<" )\n";
-
+        ;
         int row, col;
         do {
+            srand(time(NULL));
             row = rand() % board.size();
             col = rand() % board.size();
         } while (!validMove(row, col));
