@@ -1,76 +1,76 @@
 #include <iostream>
 #include <vector>
 #include "Player.h"
+#include "BoardObject.h"
 
-int playerTypeF(int number, int playersNumber)
+int playerType(int number, int playersNumber)
 {
-        int type;
+	int type;
 
-        std::cout << "\nPodaj typ " << number+1 << " gracza \n 1--- Cz³owiek"
-            "\n 2--- AI Proste"
-            "\n 3--- AI trude\n";
-        std::cin >> type;
-        return type; 
+	std::cout << "\nPodaj typ " << number + 1 << " gracza \n 1--- Cz³owiek"
+		"\n 2--- AI Proste"
+		"\n 3--- AI trude\n";
+	std::cin >> type;
+	return type;
 }
 
-int ascii = 62;
-char playerMark(int playerNumber) {
-    char mark;
 
-    if (playerNumber == 0) {
-        mark = 'O';
-    }
-    else if (playerNumber == 1) {
-        mark = 'X';
-    }
-    else {
-        if (ascii + playerNumber == 88 || ascii + playerNumber == 79) {
-            ascii += 1;
-        }
-        mark = static_cast<char>(ascii + playerNumber);
-    }
+char playerMark(int playerNumber)
+{
+	char mark;
 
-    return mark;
+	int ascii = 62;
+	if (playerNumber == 0)
+		mark = 'O';
+	else if (playerNumber == 1)
+		mark = 'X';
+	else
+	{
+		if (ascii + playerNumber == 88 || ascii + playerNumber == 79)
+			ascii += 1;
+
+		mark = static_cast<char>(ascii + playerNumber);
+	}
+
+	return mark;
 }
 
-    int main() {
-        setlocale(LC_CTYPE, "Polish");
+int main() {
+	setlocale(LC_CTYPE, "Polish");
+
+	int boardLength, playersNumber;
+	std::cout << "Podaj wielkoœæ planszy\n";
+	std::cin >> boardLength;
+	std::cout << "Podaj iloœæ graczy\n";
+	std::cin >> playersNumber;
 
 
-        int boardLength, playersNumber;
-        std::cout << "Podaj wielkoœæ planszy\n";
-        std::cin >> boardLength;
-        std::cout << "Podaj iloœæ graczy\n";
-        std::cin >> playersNumber;
+	BoardObject::CreateBoard(boardLength);
 
+	std::vector<Player> playerList;
 
-        std::vector<std::vector<char>> board(boardLength, std::vector<char>(boardLength, ' '));// vektor tworz¹cy planesze
-        std::vector<Player> playerList;
-
-
-        for (int i = 0; i < playersNumber; i++) //Przypisuje gracz¹ w³aœciwoœci
-        {
-            Player player(playerMark(i), playerTypeF(i, playersNumber), board);
-            playerList.push_back(player);
-        }
-        while (true) //Powtarzanie dopóki ktoœ nie wygra
-        {
-            for (int i = 0; i != playersNumber; i++) //Faktyczna gra
-            {
-                playerList[i].Move(i);
-                if (playerList[i].checkWin())
-                {
-
-                    std::cout << "gracz " << i + 1 << "( " << playerList[i].mark << " ) wygral!!!!!\n";
-                    playerList[i].printBoard();
-                    return 0;
-                }
-                else if (playerList[i].isBoardFull())
-                {
-                    std::cout << "plansza jest pelna. remis!!";
-                    return 0;
-                }
-            }
-        }
-    }
+	;
+	for (int i = 0; i < playersNumber; i++) //Przypisuje gracz¹ w³aœciwoœci
+	{
+		Player player(playerMark(i), playerType(i, playersNumber));
+		playerList.push_back(player);
+	}
+	int playerTurnNumber = -1;
+	while (true) //Powtarzanie dopóki ktoœ nie wygra
+	{
+		playerTurnNumber = (playerTurnNumber + 1) % playersNumber;
+		playerList[playerTurnNumber].Move(playerTurnNumber);
+		if (BoardObject::CheckWin(playerList[playerTurnNumber].GetMark()))
+		{
+			std::cout << "gracz " << playerTurnNumber + 1 << "( " << playerList[playerTurnNumber].GetMark() << " ) wygral!!!!!\n";
+			BoardObject::PrintBoard();
+			return 0;
+		}
+		else if (BoardObject::CheckDraw())
+		{
+			std::cout << "plansza jest pelna. remis!!";
+			return 0;
+		}
+	}
+}
 

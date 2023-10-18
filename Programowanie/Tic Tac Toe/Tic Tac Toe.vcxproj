@@ -127,11 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BoardObject.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Tic Tac Toe.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BoardObject.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Tic Tac Toe.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
