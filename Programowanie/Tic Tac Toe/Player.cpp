@@ -3,8 +3,6 @@
 
 #include "BoardObject.h"
 
-char mark;
-int playerType;
 
 Player::Player(char _mark, int _playerType)
 {

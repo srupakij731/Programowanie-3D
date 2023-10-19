@@ -9,4 +9,6 @@ public:
 private:
     void MakeMoveAiSimple();
     void makeMovePlayer(int turn);
+    int playerType;
+    char mark;
 };

@@ -18,6 +18,9 @@ public:
 	static void SetBoard(int row, int col, char mark);
 
 	static int GetBoardSize();
+private:
+	char mark;
+	int playerType;
 };
 
 

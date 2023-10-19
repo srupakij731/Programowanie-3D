@@ -8,8 +8,8 @@ int playerType(int number, int playersNumber)
 	int type;
 
 	std::cout << "\nPodaj typ " << number + 1 << " gracza \n 1--- Cz³owiek"
-		"\n 2--- AI Proste"
-		"\n 3--- AI trude\n";
+												 "\n 2--- AI Proste"
+												 "\n 3--- AI trude\n";
 	std::cin >> type;
 	return type;
 }
@@ -55,20 +55,21 @@ int main() {
 		Player player(playerMark(i), playerType(i, playersNumber));
 		playerList.push_back(player);
 	}
+
 	int playerTurnNumber = -1;
 	while (true) //Powtarzanie dopóki ktoœ nie wygra
-	{
+	{					
 		playerTurnNumber = (playerTurnNumber + 1) % playersNumber;
 		playerList[playerTurnNumber].Move(playerTurnNumber);
 		if (BoardObject::CheckWin(playerList[playerTurnNumber].GetMark()))
 		{
-			std::cout << "gracz " << playerTurnNumber + 1 << "( " << playerList[playerTurnNumber].GetMark() << " ) wygral!!!!!\n";
+			std::cout << "gracz " << playerTurnNumber + 1 << "( " << playerList[playerTurnNumber].GetMark() << " ) wygra³!!!!!\n";
 			BoardObject::PrintBoard();
 			return 0;
 		}
 		else if (BoardObject::CheckDraw())
 		{
-			std::cout << "plansza jest pelna. remis!!";
+			std::cout << "plansza jest pe³na. remis!!";
 			return 0;
 		}
 	}
