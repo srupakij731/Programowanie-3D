@@ -1,8 +1,9 @@
 #pragma once
 #include <vector>
+
 static class BoardObject
 {
-	
+
 public:
 	static void CreateBoard(int boardLength);
 
