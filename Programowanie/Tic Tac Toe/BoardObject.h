@@ -1,8 +1,10 @@
 #pragma once
 #include <vector>
 
-static class BoardObject
+class BoardObject
 {
+	char mark;
+	int playerType;
 
 public:
 	static void CreateBoard(int boardLength);
@@ -18,9 +20,6 @@ public:
 	static void SetBoard(int row, int col, char mark);
 
 	static int GetBoardSize();
-private:
-	char mark;
-	int playerType;
 };
 
 

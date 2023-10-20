@@ -3,13 +3,14 @@
 #include "Player.h"
 #include "BoardObject.h"
 
-int playerType(int number, int playersNumber)
+int playerType(int number)
 {
+	std::cout << "Podaj typ gracza nr: " << (number + 1) << std::endl;
+	std::cout << "1--- Cz³owiek" << std::endl;
+	std::cout << "2--- AI Proste" << std::endl;
+	std::cout << "3--- AI trude" << std::endl;
+	
 	int type;
-
-	std::cout << "\nPodaj typ " << number + 1 << " gracza \n 1--- Cz³owiek"
-												 "\n 2--- AI Proste"
-												 "\n 3--- AI trude\n";
 	std::cin >> type;
 	return type;
 }
@@ -52,7 +53,7 @@ int main() {
 	;
 	for (int i = 0; i < playersNumber; i++) //Przypisuje gracz¹ w³aœciwoœci
 	{
-		Player player(playerMark(i), playerType(i, playersNumber));
+		Player player(playerMark(i), playerType(i));
 		playerList.push_back(player);
 	}
 

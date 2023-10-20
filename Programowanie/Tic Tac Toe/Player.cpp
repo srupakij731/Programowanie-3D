@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Player.h"
-
 #include "BoardObject.h"
 
 
@@ -20,7 +19,7 @@ void Player::Move(int turn)
 	switch (playerType)
 	{
 	case 1:
-		makeMovePlayer(turn);
+		MakeMovePlayer(turn);
 		break;
 
 	case 2:
@@ -53,7 +52,7 @@ void Player::MakeMoveAiSimple() {
 	BoardObject::PrintBoard();
 }
 
-void Player::makeMovePlayer(int turn)
+void Player::MakeMovePlayer(int turn)
 {
 	int row, col;
 	std::cout << "---------------------------------------\n";

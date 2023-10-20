@@ -8,7 +8,7 @@ public:
 
 private:
     void MakeMoveAiSimple();
-    void makeMovePlayer(int turn);
+    void MakeMovePlayer(int turn);
     int playerType;
     char mark;
 };
