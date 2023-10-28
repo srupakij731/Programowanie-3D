@@ -43,7 +43,6 @@ void Player::MakeMoveAiSimple() {
 	boardSize = BoardObject::GetBoardSize();
 	do
 	{
-		srand(time(NULL));
 		row = rand() % boardSize;
 		col = rand() % boardSize;
 	} while (!BoardObject::ValidMove(row, col));
