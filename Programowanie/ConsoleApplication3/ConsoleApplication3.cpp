@@ -1,17 +1,16 @@
-﻿
+﻿#include <string>
 #include <iostream>
 /*
 DO-WHILE
-* Napisz program, który policzy sumę cyfr podanej przez użytkownika liczby.
 * Program wyświetlający na ekranie kwadraty liczb od 1 do 10 (np. 1, 4, 9, 16 itd.) dopóki suma tych kwadratów nie przekroczy 1000.
 
 WHILE
-* Miasto T. ma obecnie 100 tys. mieszkańców, ale jego populacja rośnie co roku o 3% rocznie. Miasto B. ma 300 tys. mieszkańców i ta liczba rośnie w tempie 2% na rok. Wykonaj symulację prezentującą liczbę mieszkańców w obu miastach i zatrzymującą się, gdy liczba mieszkańców miasta T. przekroczy liczbę z miasta B.
+
 * Napisz program, który poprosi użytkownika o wprowadzenie dowolnej liczby całkowitej. Następnie program powinien obliczyć i wyświetlić liczbę cyfr.
 * Program sprawdzający czy podana liczba jest liczbą doskonałą (czyli taką, której suma dzielników (z wyłączeniem samej siebie) jest równa danej liczbie, np. 6 jest liczbą doskonałą, ponieważ 1 + 2 + 3 = 6).
 FOR
 
-* Oblicz sumę szeregu 1/1^2 + 1/2^2 + 1/3^2 + ... +1/n^2. Jeżeli się nie pomylisz, to dla odpowiednio dużej wartości n po przemnożeniu jej przez 6 i spierwiastkowaniu powinieneś otrzymać wartość liczby π (suma szeregu jest równa π2/6). Zwróć uwagę, że pierwsza wartość indeksu to 1, a nie 0. Dokładność obliczeń można sprawdzić porównując z wartością odczytaną z własności Math.PI.
+
 */
 
 // Program wyświetlający na ekranie kolejne liczby naturalne od 1 do 10
@@ -68,7 +67,6 @@ void task5()
 		{
 			factorial *= j;
 		}
-
 		std::cout << "silnia " << i << " wynosi " << factorial << "\n";
 	}
 }
@@ -81,7 +79,7 @@ void task6()
 		std::cout << "\n--------- " << i << " ----------\n";
 		for (int j = 1; j <= 10; j++)
 		{
-			std::cout << i * j <<"\n";
+			std::cout << i * j << "\n";
 		}
 
 	}
@@ -90,9 +88,9 @@ void task6()
 //*Program wyświetlający na ekranie wszystkie liczby podzielne przez 3 z zakresu od 1 do 100
 void task7()
 {
-	for (double i = 0; i <=100 ; i++)
+	for (double i = 0; i <= 100; i++)
 	{
-		std::cout << i / 3.0 <<"\n";
+		std::cout << i / 3.0 << "\n";
 	}
 }
 
@@ -111,7 +109,7 @@ void task8()
 //*Program wyświetlający na ekranie ciąg Fibonacciego do 20 elementu(ciąg Fibonacciego to ciąg gdzie każdy element jest sumą dwóch poprzednich, np. 0, 1, 1, 2, 3, 5, 8, 13 itd.)
 void task9()
 {
-	int num1 =0, num2 =1;
+	int num1 = 0, num2 = 1;
 	for (int i = 0; i <= 20; i++)
 	{
 		std::cout << num1 << "\n";
@@ -122,10 +120,12 @@ void task9()
 
 /*
 Program, kóry wyświetli poniższe cztery zwory:
-****54321        121212        122333
-* **65432        212121        223334444
-* *76543        121212        333444455555
-* 87654        212121        444455555666666 
+
+****	54321        121212        122333
+***		65432        212121        223334444
+**		76543        121212        333444455555
+*		87654        212121        444455555666666
+
 */
 void task10()
 {
@@ -137,15 +137,80 @@ void task10()
 		}
 		std::cout << "\n";
 	}
+	std::cout << "\n";
+
+
+	for (int i = 5; i <= 8; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			std::cout << (i - j);
+		}
+		std::cout << "\n";
+	}
+	std::cout << "\n";
+
+	for (int i = 1; i <= 4; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			for (int k = 0; k < i + j; k++)
+			{
+				std::cout << i + j;
+			}
+		}
+		std::cout << "\n";
+
+	}
+}
+
+/*
+Oblicz sumę szeregu 1 / 1 ^ 2 + 1 / 2 ^ 2 + 1 / 3 ^ 2 + ... + 1 / n ^ 2. Jeżeli się nie pomylisz, to dla odpowiednio
+dużej wartości n po przemnożeniu jej przez 6 i spierwiastkowaniu powinieneś otrzymać wartość liczby π(suma szeregu jest równa π2 / 6).
+Zwróć uwagę, że pierwsza wartość indeksu to 1, a nie 0. Dokładność obliczeń można sprawdzić porównując z wartością odczytaną z własności Math.PI.
+*/
+void task11()
+{
+
+}
+
+
+
+/*Miasto T.ma obecnie 100 tys.mieszkańców, ale jego populacja rośnie co roku o 3 % rocznie.Miasto B.ma 300 tys.mieszkańców i ta liczba rośnie w tempie 2 % na rok.
+Wykonaj symulację prezentującą liczbę mieszkańców w obu miastach i zatrzymującą się, gdy liczba mieszkańców miasta T.przekroczy liczbę z miasta B. */
+void task13()
+{
+	int firstCityPopulation = 100000, secondCityPopulation = 300000;
+
+	for (int i = 0; firstCityPopulation < secondCityPopulation; i++)
+	{
+		std::cout << "------------------" << i << "------------------";
+		std::cout << std::endl;
+		std::cout << "populacja 1 miasta wynosi: " << firstCityPopulation << std::endl;
+		std::cout << "populacja 2 miasta wynosi: " << secondCityPopulation << std::endl;
+		std::cout << std::endl;
+		firstCityPopulation *= 1.03;
+		secondCityPopulation *= 1.02;
+	}
+	std::cout << "\n \n KONIEC \n";
+
+	std::cout << "populacja 1 miasta wynosi: " << firstCityPopulation << std::endl;
+	std::cout << "populacja 2 miasta wynosi: " << secondCityPopulation << std::endl;
+}
+
+//Napisz program, który policzy sumę cyfr podanej przez użytkownika liczby.
+void task12()
+{
+	int number, amount = 0;
+	std::cout << "podaj lcizbe \n";
+	std::cin >> number;
 
 
 }
 int main()
 {
 	setlocale(LC_CTYPE, "Polish");
-	task10();
+	task13();
 
 
 }
-
-
