@@ -149,7 +149,6 @@ void task10()
 			}
 		}
 		std::cout << "\n";
-
 	}
 }
 
@@ -186,11 +185,11 @@ void task13()
 		std::cout << "populacja 1 miasta wynosi: " << firstCityPopulation << std::endl;
 		std::cout << "populacja 2 miasta wynosi: " << secondCityPopulation << std::endl;
 		std::cout << std::endl;
+
 		firstCityPopulation *= 1.03;
 		secondCityPopulation *= 1.02;
 	}
 	std::cout << "\n \n KONIEC \n";
-
 	std::cout << "populacja 1 miasta wynosi: " << firstCityPopulation << std::endl;
 	std::cout << "populacja 2 miasta wynosi: " << secondCityPopulation << std::endl;
 }
