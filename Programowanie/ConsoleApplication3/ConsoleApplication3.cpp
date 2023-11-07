@@ -1,17 +1,6 @@
 ﻿#include <string>
 #include <iostream>
-/*
-DO-WHILE
-* Program wyświetlający na ekranie kwadraty liczb od 1 do 10 (np. 1, 4, 9, 16 itd.) dopóki suma tych kwadratów nie przekroczy 1000.
 
-WHILE
-
-* Napisz program, który poprosi użytkownika o wprowadzenie dowolnej liczby całkowitej. Następnie program powinien obliczyć i wyświetlić liczbę cyfr.
-* Program sprawdzający czy podana liczba jest liczbą doskonałą (czyli taką, której suma dzielników (z wyłączeniem samej siebie) jest równa danej liczbie, np. 6 jest liczbą doskonałą, ponieważ 1 + 2 + 3 = 6).
-FOR
-
-
-*/
 
 // Program wyświetlający na ekranie kolejne liczby naturalne od 1 do 10
 void task1()
@@ -174,7 +163,15 @@ void task11()
 
 }
 
+//Napisz program, który policzy sumę cyfr podanej przez użytkownika liczby.
+void task12()
+{
+	int number, amount = 0;
+	std::cout << "podaj lcizbe \n";
+	std::cin >> number;
 
+
+}
 
 /*Miasto T.ma obecnie 100 tys.mieszkańców, ale jego populacja rośnie co roku o 3 % rocznie.Miasto B.ma 300 tys.mieszkańców i ta liczba rośnie w tempie 2 % na rok.
 Wykonaj symulację prezentującą liczbę mieszkańców w obu miastach i zatrzymującą się, gdy liczba mieszkańców miasta T.przekroczy liczbę z miasta B. */
@@ -198,19 +195,57 @@ void task13()
 	std::cout << "populacja 2 miasta wynosi: " << secondCityPopulation << std::endl;
 }
 
-//Napisz program, który policzy sumę cyfr podanej przez użytkownika liczby.
-void task12()
+//*Program sprawdzający czy podana liczba jest liczbą doskonałą(czyli taką, której suma dzielników(z wyłączeniem samej siebie)
+//  jest równa danej liczbie, np. 6 jest liczbą doskonałą, ponieważ 1 + 2 + 3 = 6).
+void task14()
 {
-	int number, amount = 0;
-	std::cout << "podaj lcizbe \n";
-	std::cin >> number;
+	int numberFromUser, amount = 1;
+	std::cout << "podaj liczbe";
+	std::cin >> numberFromUser;
 
+	for (int firstDivisor = 2; firstDivisor <= sqrt(numberFromUser); firstDivisor++)
+	{
+		int secondDivisor = numberFromUser / firstDivisor;
+		if (secondDivisor * firstDivisor == numberFromUser)
+			amount += firstDivisor + secondDivisor;
+	}
+	if (numberFromUser == amount)
+		std::cout << "liczba jest doskonała";
+	else
+		std::cout << "liczba NIE jest doskonała";
+}
+
+//*Program wyświetlający na ekranie kwadraty liczb od 1 do 10 (np. 1, 4, 9, 16 itd.) dopóki suma tych kwadratów nie przekroczy 1000.
+void task15()
+{
+	int amount = 0;
+	for (int i = 2; i <= 10; i++)
+	{
+		amount = 0;
+
+		for (int j = 1; amount < 1000; j++)
+		{
+			amount += pow(i, j);
+		}
+		std::cout << "liczba " << i << " przekroczyła 1000 i wynosi " << amount << "\n";
+
+	}
+}
+
+//*Napisz program, który poprosi użytkownika o wprowadzenie dowolnej liczby całkowitej.Następnie program powinien obliczyć i wyświetlić liczbę cyfr.
+void task16()
+{
+	std::string numberFromUser;
+	std::cout << "podaj liczbe";
+	std::cin >> numberFromUser;
+	std::cout << numberFromUser.length;
 
 }
+
 int main()
 {
 	setlocale(LC_CTYPE, "Polish");
-	task13();
+	task16();
 
 
 }

@@ -45,8 +45,9 @@ int main() {
 	std::cout << "Podaj iloœæ graczy\n";
 	std::cin >> playersNumber;
 
+	BoardObject bordObject(boardLength);
 
-	BoardObject::CreateBoard(boardLength);
+	//BoardObject::CreateBoard(boardLength);
 
 	std::vector<Player> playerList;
 
