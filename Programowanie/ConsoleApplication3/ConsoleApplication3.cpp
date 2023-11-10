@@ -139,6 +139,15 @@ void task10()
 	}
 	std::cout << "\n";
 
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 6; j++)
+		{
+			std::cout << (j + i) % 2 + 1;
+		}
+		std::cout << "\n";
+	}
+
 	for (int i = 1; i <= 4; i++)
 	{
 		for (int j = 0; j < 3; j++)
@@ -160,16 +169,31 @@ Zwróć uwagę, że pierwsza wartość indeksu to 1, a nie 0. Dokładność obli
 */
 void task11()
 {
-
+	double numberFromUser, amount = 0;
+	std::cout << "podaj liczbe \n";
+	std::cin >> numberFromUser;
+	for (int i =1; i < numberFromUser; i++)
+	{
+		amount += 1 / pow(i, 2);
+	}
+	std::cout << sqrt(amount * 6);
 }
 
 //Napisz program, który policzy sumę cyfr podanej przez użytkownika liczby.
 void task12()
 {
-	int number, amount = 0;
+	int amount = 0;
+	std::string numberFromUser;
 	std::cout << "podaj lcizbe \n";
-	std::cin >> number;
+	std::cin >> numberFromUser;
 
+	for (int i = 0; i < numberFromUser.length(); i++)
+	{
+		;
+		amount += numberFromUser[i] - '0';
+
+	}
+	std::cout << amount;
 
 }
 
@@ -236,16 +260,15 @@ void task15()
 void task16()
 {
 	std::string numberFromUser;
-	std::cout << "podaj liczbe";
+	std::cout << "podaj liczbe \n";
 	std::cin >> numberFromUser;
-	std::cout << numberFromUser.length;
-
+	std::cout << "liczba cyfr wynosi: " << numberFromUser.length();
 }
 
 int main()
 {
 	setlocale(LC_CTYPE, "Polish");
-	task16();
+	task11();
 
 
 }
