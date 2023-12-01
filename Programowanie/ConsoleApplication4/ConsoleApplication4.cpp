@@ -6,7 +6,6 @@
 /*
 *
 * Program wyci¹gaj¹cy informacje z numeru PESEL
-* Program implementuj¹cy algorytm szyfrowania Cezara (proste szyfrowanie, w którym ka¿dy znak w tekœcie jest zastêpowany innym znakiem, przesuniêtym o sta³¹ liczbê pozycji w alfabecie).
 * Program, który na wejœciu przyjmie rówanie w ONP a na wyjœciu wyœwietli wynik rówania.
 */
 
@@ -68,7 +67,7 @@ void task4()
 	std::string textFromUser, textPalindrome = "";
 	std::cout << "podaj text: ";
 	std::cin >> textFromUser;
-	for (int i = textFromUser.length() -1; i >= 0; i--)
+	for (int i = textFromUser.length() - 1; i >= 0; i--)
 	{
 		textPalindrome += textFromUser[i];
 	}
@@ -91,7 +90,7 @@ void task5()
 
 	for (char c : textFromUser1)
 		text1CharSum += c;
-	for(char c : textFromUser2)
+	for (char c : textFromUser2)
 		text2CharSum += c;
 	if (text1CharSum == text2CharSum)
 		std::cout << "to sa anagramy";
@@ -100,6 +99,38 @@ void task5()
 
 }
 
+
+//*Program implementuj¹cy algorytm szyfrowania Cezara
+// (proste szyfrowanie, w którym ka¿dy znak w tekœcie jest zastêpowany innym znakiem, przesuniêtym o sta³¹ liczbê pozycji w alfabecie).
+void task7()
+{
+	std::string textFromUser;
+	int letterIncrise;
+
+	std::cout << "podaj text\n";
+	std::cin >> textFromUser;
+	std::cout << "podaj o ile ma siê zwiêkrzaæ text \n";
+	std::cin >> letterIncrise;
+
+	if (letterIncrise > 'z')
+		letterIncrise %= 26;
+
+	for (char c : textFromUser)
+	{
+		if (isalpha(c))
+		{
+			for (int i = 0; i < letterIncrise; i++)
+			{
+				c++;
+				if (c == '[')
+					c = 'A';
+				else if (c == '{')
+					c = 'a';
+			}
+		}
+		std::cout << c;
+	}
+}
 
 bool isConstOrVariable(char c)
 {
@@ -135,7 +166,7 @@ void task8()
 		{
 			Operator op;
 			op.AutoSet(equationRegular[i]);
-			while (!stack.empty() &&  op.GetPriority() <= stack.back().GetPriority())
+			while (!stack.empty() && op.GetPriority() <= stack.back().GetPriority())
 			{
 				equationONP.push_back(stack.back().GetSymbol());
 				stack.pop_back();
@@ -144,18 +175,14 @@ void task8()
 			// DODAJ NAWIASY BO NAWIASY POTRZEBNE
 			stack.push_back(op);
 		}
-
 		else
-		{
 			std::cerr << "bruh";
-		}
 	}
 	if (!stack.empty())
 	{
 		for (int i = 0; i < stack.size(); i++)
 		{
 			equationONP.push_back(stack.at(i).GetSymbol());
-
 		}
 	}
 
@@ -163,12 +190,12 @@ void task8()
 	{
 		std::cout << c;
 	}
-	
+
 }
 
 int main()
 {
 
-	task5();
+	task8();
 
 }
