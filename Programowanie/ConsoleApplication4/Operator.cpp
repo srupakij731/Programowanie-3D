@@ -1,9 +1,9 @@
 #include "Operator.h"
 #include <string>
 
-void Operator::AutoSet(std::string partOfEquationRegular)
+void Operator::AutoSet(std::string newSymbol)
 {
-	symbol = partOfEquationRegular;
+	symbol = newSymbol;
 	SetPriority();
 }
 std::string Operator::GetSymbol()
@@ -16,9 +16,9 @@ int Operator::GetPriority()
 	return priority;
 }
 
-void Operator::SetSymbol(std::string partOfEquationRegular)
+void Operator::SetSymbol(std::string newSymbol)
 {
-	symbol = partOfEquationRegular;
+	symbol = newSymbol;
 }
 
 void Operator::SetPriority()
