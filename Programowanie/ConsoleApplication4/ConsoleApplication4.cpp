@@ -2,10 +2,12 @@
 #include <vector>
 #include "Operator.h"
 #include <string>
+#include <sstream>
+#include <stack>
+
 
 /*
 *
-* Program wyci¹gaj¹cy informacje z numeru PESEL
 * Program, który na wejœciu przyjmie rówanie w ONP a na wyjœciu wyœwietli wynik rówania.
 */
 
@@ -29,13 +31,13 @@ void task2()
 	std::cout << "podaj text";
 	std::cin >> textFromUser;
 
-	for (char c : textFromUser)
+	for (char partOfEquationRegular : textFromUser)
 	{
-		if (isalpha(c))
+		if (isalpha(partOfEquationRegular))
 		{
-			if (c == 'a' || c == 'A' || c == 'e' || c == 'E'
-				|| c == 'i' || c == 'I' || c == 'u'
-				|| c == 'U' || c == 'y' || c == 'Y')
+			if (partOfEquationRegular == 'a' || partOfEquationRegular == 'A' || partOfEquationRegular == 'e' || partOfEquationRegular == 'E'
+				|| partOfEquationRegular == 'i' || partOfEquationRegular == 'I' || partOfEquationRegular == 'u'
+				|| partOfEquationRegular == 'U' || partOfEquationRegular == 'y' || partOfEquationRegular == 'Y')
 				vovelCount++;
 			else
 				consonantCount++;
@@ -79,27 +81,17 @@ void task4()
 
 //*Program sprawdzaj¹cy czy podane dwa s³owa s¹ anagramami
 //(czyli takimi, które zawieraj¹ te same litery, ale w innym uk³adzie, np. "klasa" i "salka")
-void task5()
-{
-	int text1CharSum = 0, text2CharSum = 0;
-	std::string textFromUser1, textFromUser2;
-	std::cout << "podaj text 1: ";
-	std::cin >> textFromUser1;
-	std::cout << "podaj text 2: ";
-	std::cin >> textFromUser2;
 
-	for (char c : textFromUser1)
-		text1CharSum += c;
-	for (char c : textFromUser2)
-		text2CharSum += c;
-	if (text1CharSum == text2CharSum)
-		std::cout << "to sa anagramy";
-	else
-		std::cout << "to NIE sa anagramy";
+
+//*Program wyci¹gaj¹cy informacje z numeru PESEL
+void task6()
+{
+	std::string pesel;
+	std::cout << "podaj pesel \n";
+	std::cin >> pesel;
+
 
 }
-
-
 //*Program implementuj¹cy algorytm szyfrowania Cezara
 // (proste szyfrowanie, w którym ka¿dy znak w tekœcie jest zastêpowany innym znakiem, przesuniêtym o sta³¹ liczbê pozycji w alfabecie).
 void task7()
@@ -115,34 +107,26 @@ void task7()
 	if (letterIncrise > 'z')
 		letterIncrise %= 26;
 
-	for (char c : textFromUser)
+	for (char partOfEquationRegular : textFromUser)
 	{
-		if (isalpha(c))
+		if (isalpha(partOfEquationRegular))
 		{
 			for (int i = 0; i < letterIncrise; i++)
 			{
-				c++;
-				if (c == '[')
-					c = 'A';
-				else if (c == '{')
-					c = 'a';
+				partOfEquationRegular++;
+				if (partOfEquationRegular == '[')
+					partOfEquationRegular = 'A';
+				else if (partOfEquationRegular == '{')
+					partOfEquationRegular = 'a';
 			}
 		}
-		std::cout << c;
+		std::cout << partOfEquationRegular;
 	}
 }
 
-bool isConstOrVariable(char c)
+bool isOperator(std::string partOfEquationRegular)
 {
-	if (c > 'a' && c < 'z' || c >= '0' && c <= '9')
-		return 1;
-	else
-		return 0;
-}
-
-bool isOperator(char c)
-{
-	if (c == '+' || c == '-' || c == '/' || c == '*' || c == '%' || c == '^' || c == '(' || c == ')')
+	if (partOfEquationRegular == "+" || partOfEquationRegular == "-" || partOfEquationRegular == "/" || partOfEquationRegular == "*" || partOfEquationRegular == "%" || partOfEquationRegular == "^")
 		return 1;
 	else
 		return 0;
@@ -153,44 +137,55 @@ bool isOperator(char c)
 void task8()
 {
 	std::string equationRegular;
-	std::vector<char> equationONP;
-	std::vector<Operator> stack;
+	std::stack<std::string> reversedEquationONP;
+	std::stack<Operator> stack;
 	std::cout << "Podaj rownanie: \n";
-	std::cin >> equationRegular;
+	std::getline(std::cin, equationRegular);
 
-	for (int i = 0; i < equationRegular.length(); i++)
+	std::istringstream iss(equationRegular);
+
+	std::string partOfEquationRegular;
+
+	while (iss >> partOfEquationRegular)
 	{
-		if (isConstOrVariable(equationRegular[i]))
-			equationONP.push_back(equationRegular[i]);
-		else if (isOperator(equationRegular[i]))
+		if (isOperator(partOfEquationRegular))
 		{
 			Operator op;
-			op.AutoSet(equationRegular[i]);
-			while (!stack.empty() && op.GetPriority() <= stack.back().GetPriority())
+			op.AutoSet(partOfEquationRegular);
+			while (!stack.empty() && op.GetPriority() <= stack.top().GetPriority())
 			{
-				equationONP.push_back(stack.back().GetSymbol());
-				stack.pop_back();
+				reversedEquationONP.push(stack.top().GetSymbol());
+				stack.pop();
+				// DODAJ NAWIASY BO NAWIASY POTRZEBNE
 			}
-
-			// DODAJ NAWIASY BO NAWIASY POTRZEBNE
-			stack.push_back(op);
+			stack.push(op);
 		}
 		else
-			std::cerr << "bruh";
+			reversedEquationONP.push(partOfEquationRegular);
 	}
-	if (!stack.empty())
+	while (!stack.empty())
 	{
-		for (int i = 0; i < stack.size(); i++)
-		{
-			equationONP.push_back(stack.at(i).GetSymbol());
-		}
+		reversedEquationONP.push(stack.top().GetSymbol());
+		stack.pop();
 	}
 
-	for (char c : equationONP)
+	std::stack<std::string>regularEquationONP;
+
+
+	//XDDDDDDDDDDDDDDDDD
+	while (!reversedEquationONP.empty())
 	{
-		std::cout << c;
+		regularEquationONP.push(reversedEquationONP.top());
+		reversedEquationONP.pop();
 	}
 
+
+	while (!regularEquationONP.empty())
+	{
+		std::cout << regularEquationONP.top();
+		regularEquationONP.pop();
+		std::cout << "\n ";
+	}
 }
 
 int main()

@@ -2,13 +2,13 @@
 class Operator
 {
 public:
-	char GetSymbol();
+	std::string GetSymbol();
 	int GetPriority();
-	void SetSymbol(char _symbol);
+	void SetSymbol(std::string _symbol);
 	void SetPriority();
-	void AutoSet(char _symbol);
+	void AutoSet(std::string _symbol);
 private:
-	char symbol;
+	std::string symbol;
 	int priority;
 
 };
