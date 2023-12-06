@@ -182,9 +182,8 @@ void task8()
 
 	while (!regularEquationONP.empty())
 	{
-		std::cout << regularEquationONP.top();
+		std::cout << regularEquationONP.top() << " ";
 		regularEquationONP.pop();
-		std::cout << "\n ";
 	}
 }
 

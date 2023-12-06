@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 class Operator
 {
 public:
@@ -7,6 +8,7 @@ public:
 	void SetSymbol(std::string newSymbol);
 	void SetPriority();
 	void AutoSet(std::string newSymbol);
+
 private:
 	std::string symbol;
 	int priority;
