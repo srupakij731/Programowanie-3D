@@ -89,7 +89,7 @@ void task6()
 	std::string pesel;
 	std::cout << "podaj pesel \n";
 	std::cin >> pesel;
-
+	// %20 DO MIESI¥C
 
 }
 //*Program implementuj¹cy algorytm szyfrowania Cezara
@@ -137,7 +137,7 @@ bool isOperator(std::string partOfEquationRegular)
 void task8()
 {
 	std::string equationRegular;
-	std::stack<std::string> reversedEquationONP;
+	std::stack<std::string> regularEquationONP;
 	std::stack<Operator> stack;
 	std::cout << "Podaj rownanie: \n";
 	std::getline(std::cin, equationRegular);
@@ -154,36 +154,36 @@ void task8()
 			op.AutoSet(partOfEquationRegular);
 			while (!stack.empty() && op.GetPriority() <= stack.top().GetPriority())
 			{
-				reversedEquationONP.push(stack.top().GetSymbol());
+				regularEquationONP.push(stack.top().GetSymbol());
 				stack.pop();
-				// DODAJ NAWIASY BO NAWIASY POTRZEBNE
+				//TODO: DODAJ NAWIASY BO NAWIASY POTRZEBNE
 			}
 			stack.push(op);
 		}
 		else
-			reversedEquationONP.push(partOfEquationRegular);
+		{
+			regularEquationONP.push(partOfEquationRegular);
+		}
 	}
 	while (!stack.empty())
 	{
-		reversedEquationONP.push(stack.top().GetSymbol());
+		regularEquationONP.push(stack.top().GetSymbol());
 		stack.pop();
 	}
 
-	std::stack<std::string>regularEquationONP;
-
+	std::stack<std::string>reversedEquationONP;
 
 	//XDDDDDDDDDDDDDDDDD
-	while (!reversedEquationONP.empty())
-	{
-		regularEquationONP.push(reversedEquationONP.top());
-		reversedEquationONP.pop();
-	}
-
-
 	while (!regularEquationONP.empty())
 	{
-		std::cout << regularEquationONP.top() << " ";
+		reversedEquationONP.push(regularEquationONP.top());
 		regularEquationONP.pop();
+	}
+
+	while (!reversedEquationONP.empty())
+	{
+		std::cout << reversedEquationONP.top() << " ";
+		reversedEquationONP.pop();
 	}
 }
 

@@ -11,7 +11,7 @@ public:
 
 private:
 	std::string symbol;
-	int priority;
+	int priority = 0;
 
 };
 
