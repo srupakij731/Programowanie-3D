@@ -101,6 +101,8 @@ void task5()
 	}
 }
 
+//wersja 2
+
 int main()
 {
 	task5();
