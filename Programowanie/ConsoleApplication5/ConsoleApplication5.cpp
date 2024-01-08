@@ -99,9 +99,26 @@ void task5()
 		}
 		std::cout << numberFromRange << " = " << count << "\n";
 	}
+	//wersja 2
+	int number0fOccurences[UPPER_RANGE - LOWER_RANGE + 1];
+
+		for (int i = 0; i < UPPER_RANGE - LOWER_RANGE + 1; i++)
+		{
+			number0fOccurences[i] = 0;
+		}
+
+		for (int i = 0; i < SIZE_OF_ARRAY; i++)
+		{
+			number0fOccurences[numbers[i] - LOWER_RANGE + 1];
+		}
+		
+		for (int i = 0; UPPER_RANGE - LOWER_RANGE + 1; i++)
+		{
+			std::cout << i + LOWER_RANGE << " = " << number0fOccurences[i];
+		}
 }
 
-//wersja 2
+
 
 int main()
 {
