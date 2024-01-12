@@ -102,25 +102,76 @@ void task5()
 	//wersja 2
 	int number0fOccurences[UPPER_RANGE - LOWER_RANGE + 1];
 
-		for (int i = 0; i < UPPER_RANGE - LOWER_RANGE + 1; i++)
-		{
-			number0fOccurences[i] = 0;
-		}
+	for (int i = 0; i < UPPER_RANGE - LOWER_RANGE + 1; i++)
+	{
+		number0fOccurences[i] = 0;
+	}
 
-		for (int i = 0; i < SIZE_OF_ARRAY; i++)
-		{
-			number0fOccurences[numbers[i] - LOWER_RANGE + 1];
-		}
-		
-		for (int i = 0; UPPER_RANGE - LOWER_RANGE + 1; i++)
-		{
-			std::cout << i + LOWER_RANGE << " = " << number0fOccurences[i];
-		}
+	for (int i = 0; i < SIZE_OF_ARRAY; i++)
+	{
+		number0fOccurences[numbers[i] - LOWER_RANGE + 1];
+	}
+
+	for (int i = 0; UPPER_RANGE - LOWER_RANGE + 1; i++)
+	{
+		std::cout << i + LOWER_RANGE << " = " << number0fOccurences[i];
+	}
 }
 
+void task6()
+{
+	const int UPPER_RANGE = 50;
 
+	//1
+
+	//for (int i = 2; i <= UPPER_RANGE; i++)
+	//{
+	//	bool isPrime = true;
+	//	for (int j = 2; j < sqrt(i); j++)
+	//	{
+	//		if (i % j == 0)
+	//		{
+
+	//			isPrime = false;
+	//			break;
+	//		}
+	//	}
+	//	if (isPrime)
+	//		std::cout << i << "\n";
+	//}
+
+	//std::cout <<"\n";
+
+
+	//2
+	bool primeNumbers[UPPER_RANGE + 1];
+
+	for (int i = 2; i < UPPER_RANGE + 1; i++)
+	{
+		primeNumbers[i] = true;
+	}
+
+	for (int i = 2; i < UPPER_RANGE + 1; i++)
+	{
+		if (primeNumbers[i])
+		{
+			for (int j = i + i; j < UPPER_RANGE + 1; j += i)
+			{
+				primeNumbers[i] = false;
+			}
+		}
+	}
+
+	for (int i = 2; i < UPPER_RANGE + 1; i++)
+	{
+		if (primeNumbers[i])
+		{
+			std::cout << i << "\n";
+		}
+	}
+}
 
 int main()
 {
-	task5();
+	task6();
 }
