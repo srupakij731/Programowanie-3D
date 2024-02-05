@@ -18,7 +18,6 @@ double distanceFromCenter(point p)
 	double distance = sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
 	return distance;
 }
-
 int main()
 {
 	double x, y, z;
