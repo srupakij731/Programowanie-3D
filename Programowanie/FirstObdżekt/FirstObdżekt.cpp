@@ -7,6 +7,11 @@ public:
 	double x;
 	double y;
 	double z;
+
+	double GetX()
+	{
+		return x;
+	}
 };
 
 double distanceFromCenter(Point p)
