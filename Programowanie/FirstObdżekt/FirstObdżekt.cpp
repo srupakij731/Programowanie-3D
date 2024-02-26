@@ -3,30 +3,52 @@
 
 class Point
 {
+private:
+	double x, y ,z;
+	
 public:
-	double x;
-	double y;
-	double z;
-
 	double GetX()
 	{
 		return x;
 	}
+	void SetX(double value)
+	{
+		x = value;
+	}
+
+	double GetY()
+	{
+		return y;
+	}
+	void SetY(double value)
+	{
+		y = value;
+	}
+
+	double GetZ()
+	{
+		return z;
+	}
+	void SetZ(double value)
+	{
+		z = value;
+	}
+	double distanceFromCenter()
+	{
+		double distance = sqrt(x * x + y * y + z * z);
+		return distance;
+	}
 };
 
-double distanceFromCenter(Point p)
-{
 
-	double distance = sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
-	return distance;
-}
 
 int main()
 {
 	Point myPoint;
-	myPoint.x = 2;
-	myPoint.y = 6;
-	myPoint.z = 5;
-	std::cout << "dystans od środka wynosi " << distanceFromCenter(myPoint);
+	myPoint.SetX(2);
+	myPoint.SetY(6);
+	myPoint.SetZ(18);
+	std::cout << "dystans od środka wynosi " << myPoint.distanceFromCenter();	
+
 }
 
