@@ -87,7 +87,6 @@ public:
 	{
 		balance = floor(money);
 		password = userPassword;
-
 	}
 
 	void AddMoney(double money)
@@ -95,27 +94,26 @@ public:
 		 balance += floor(money);
 	}
 
-	void TakeMoney(double money, std::string userPassword)
+	bool TakeMoney(double money, std::string userPassword)
 	{
 		money = floor(money);
-		if (userPassword == password && money >= balance)
+		if (userPassword == password && money <= balance)
 		{
 				balance -= money;
+				return true;
 		}
+		return false;
 	}
 	void Info()
 	{
 		std::cout << balance;
 	}
 
-	void Transfer(double money, std::string userPassword, Account target)
+	void Transfer(double money, std::string userPassword, Account &target)
 	{
 		money = floor(money);
-		if (userPassword == password && money <= balance)
-		{
-			balance -= money;
+		if(TakeMoney(money, userPassword))
 			target.AddMoney(money);
-		}
 	}
 };
 
