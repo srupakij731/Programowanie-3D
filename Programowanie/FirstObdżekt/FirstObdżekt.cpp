@@ -92,7 +92,7 @@ public:
 
 	void AddMoney(double money)
 	{
-		balance += floor(money);
+		 balance += floor(money);
 	}
 
 	void TakeMoney(double money, std::string userPassword)
