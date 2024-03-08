@@ -108,7 +108,7 @@ public:
 		std::cout << balance;
 	}
 
-	void Transfer(double money, std::string userPassword, Account target)
+	void Transfer(double money, std::string userPassword,  Account target)
 	{
 		money = floor(money);
 		if (userPassword == password && money <= balance)
@@ -129,7 +129,7 @@ int main()
 
 	Account b(10, "b"), c(1, "c");
 
-	b.Transfer(3, "b", c);
+	b.Transfer(3,"b", c);
 	b.Info();
 	c.Info();
 }
