@@ -13,7 +13,12 @@ public:
 		SetY(yy);
 		SetZ(zz);
 	}
-
+	Point(Point& p)
+	{
+		SetX(x = p.x);
+		SetY(y = p.y);
+		SetZ(z = p.z);
+	}
 	double GetX()
 	{
 		return x;
@@ -91,7 +96,7 @@ public:
 
 	void AddMoney(double money)
 	{
-		 balance += floor(money);
+		balance += floor(money);
 	}
 
 	bool TakeMoney(double money, std::string userPassword)
@@ -99,8 +104,8 @@ public:
 		money = floor(money);
 		if (userPassword == password && money <= balance)
 		{
-				balance -= money;
-				return true;
+			balance -= money;
+			return true;
 		}
 		return false;
 	}
@@ -109,10 +114,10 @@ public:
 		std::cout << balance;
 	}
 
-	void Transfer(double money, std::string userPassword, Account &target)
+	void Transfer(double money, std::string userPassword, Account& target)
 	{
 		money = floor(money);
-		if(TakeMoney(money, userPassword))
+		if (TakeMoney(money, userPassword))
 			target.AddMoney(money);
 	}
 };
