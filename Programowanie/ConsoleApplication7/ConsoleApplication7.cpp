@@ -122,19 +122,16 @@ class SmartPhone : public ElectronicDevice
 };
 class Television : public ElectronicDevice
 {
-
 };
 class Laptop : public ElectronicDevice 
 {
 };
-
 class iPhone : public SmartPhone
 {
 };
 class AndroidPhone : public SmartPhone
 {
 };
-
 class LEDTV : public Television
 {
 
@@ -143,6 +140,9 @@ class SmartTV : public Television
 {
 
 };
+
+
+
 	class Quadrangle
 
 {
@@ -205,8 +205,12 @@ int main()
 {
 	Quadrangle q(0, 0, 0, 0, 0);
 	Square s(2);
+	s.GetArea();
 	s.GetPerimeter();
 	Rectangle r(1, 2);
+	r.GetArea();
+	r.GetPerimeter();
 	Trapeze t(1, 2, 3, 4, 5);
-
+	t.GetArea();
+	t.GetPerimeter();
 }
