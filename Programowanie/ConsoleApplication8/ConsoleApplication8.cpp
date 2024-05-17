@@ -133,7 +133,7 @@ public:
 // zad 4
 class Date
 {
-
+private:
 };
 int main()
 {
@@ -156,12 +156,11 @@ int main()
 	//a2.AmountDevideBy3();
 	//a2.ShowNumbers();
 
-	Person KarolBakalarz("Karol", "Bakalarz", 15);
-	KarolBakalarz.Show();
+	//Person KarolBakalarz("Karol", "Bakalarz", 15);
+	//KarolBakalarz.Show();
 
-	Book b("Emil Rak i kamieñ nerkowy", KarolBakalarz, "11/09/2001");
-	b.Show();
-
+	//Book b("Emil Rak i kamieñ nerkowy", KarolBakalarz, "11/09/2001");
+	//b.Show();
 
 
 
