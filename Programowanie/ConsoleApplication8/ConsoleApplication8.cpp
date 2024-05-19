@@ -1,7 +1,6 @@
 #include <iostream>
-
+#include <ctime>
 //zad 1
-
 class Count
 {
 private:
@@ -26,7 +25,6 @@ public:
 };
 
 //zad2
-
 class Adder
 {
 private:
@@ -86,7 +84,6 @@ public:
 
 
 //zad 3
-
 class Person
 {
 private:
@@ -104,7 +101,7 @@ public:
 	{
 
 	}
-	void Show()
+	void ShowInfo()
 	{
 		std::cout << name << "\n" << lastName << "\n" << age << "\n \n";
 	}
@@ -123,10 +120,10 @@ public:
 		this->author = author;
 		this->date = date;
 	}
-	void Show()
+	void ShowInfo()
 	{
 		std::cout << title << "\n" << date << "\n";
-		author.Show();
+		author.ShowInfo();
 	}
 };
 
@@ -134,34 +131,123 @@ public:
 class Date
 {
 private:
+	int daysInMonth[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30 ,31 };
+	int day;
+	int month;
+	int year;
+public:
+	Date(int day, int month, int year)
+	{
+		month--;
+		SetMonth(month);
+		SetYear(year);
+		SetDay(day);
+
+	}
+	int Getday()
+	{
+		return day;
+	}
+	void SetDay(int day)
+	{
+		if (day > daysInMonth[month] || day < 0)
+			std::cerr << "wrong day";
+
+		this->day = day;
+	}
+
+	int GetMonth() { return month; }
+	void SetMonth(int month)
+	{
+		if (month > 11 || month < 0)
+			std::cerr << "wrong month";
+		this->month = month;
+	}
+
+	int GetYear()
+	{
+		return year;
+	}
+	void SetYear(int year)
+	{
+		if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+			daysInMonth[1] = 29;
+		else daysInMonth[1] = 28;
+		this->year = year;
+	}
+
+	void AddWeek()
+	{
+		int newDay = day + 7;
+		if (newDay > daysInMonth[month])
+		{
+			newDay -= daysInMonth[month];
+
+			if (month = 11)
+			{
+				SetMonth(0);
+				SetYear(year + 1);
+			}
+			else
+				SetMonth(month + 1);
+		}
+		SetDay(newDay);
+	}
+
+	void SubtractWeek()
+	{
+		int newDay = day - 7;
+		if (newDay < 0)
+		{
+			newDay += daysInMonth[(month + 11) % 1];
+
+			if (month == 0)
+			{
+				SetMonth(11);
+				SetYear(year - 1);
+			}
+			else
+				SetMonth(month - 1);
+		}
+		SetDay(newDay);
+	}
+	void ShowInfo()
+	{
+		std::cout << day << "\n" << month + 1 << "\n" << year << "\n";
+	}
+
+
 };
+
 int main()
 {
+	Count c1;
+	c1.Add(1);
+	c1.Subtract(2);
+	Count c2(10);
+	c2.Add(1);
+	c2.Subtract(2);
 
-	//Count c1;
-	//c1.Add(1);
-	//c1.Subtract(2);
-	//Count c2(10);
-	//c2.Add(1);
-	//c2.Subtract(2);
+	Adder a1;
+	std::cout << a1.Amount() << "\n";
+	std::cout << a1.AmountDevideBy3() << "\n";
+	a1.ShowNumbers();
+	std::cout << "\n";
+	Adder a2(20);
+	a2.Amount();
+	a2.AmountDevideBy3();
+	a2.ShowNumbers();
 
-	//Adder a1;
-	//std::cout << a1.Amount() << "\n";
-	//std::cout << a1.AmountDevideBy3() << "\n";
-	//a1.ShowNumbers();
-	//std::cout << "\n";
+	Person KarolBakalarz("Karol", "Bakalarz", 15);
+	KarolBakalarz.ShowInfo();
+	Book b("Emil Rak i kamieñ nerkowy", KarolBakalarz, "11/09/2001");
+	b.ShowInfo();
 
-	//Adder a2(20);
-	//a2.Amount();
-	//a2.AmountDevideBy3();
-	//a2.ShowNumbers();
-
-	//Person KarolBakalarz("Karol", "Bakalarz", 15);
-	//KarolBakalarz.Show();
-
-	//Book b("Emil Rak i kamieñ nerkowy", KarolBakalarz, "11/09/2001");
-	//b.Show();
-
-
+	Date d1(30, 12, 2024);
+	d1.AddWeek();
+	d1.ShowInfo();
+	d1.SubtractWeek();
+	d1.ShowInfo();
 
 }
+
