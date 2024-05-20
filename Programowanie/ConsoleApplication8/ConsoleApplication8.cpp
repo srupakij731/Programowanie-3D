@@ -204,7 +204,7 @@ public:
 		int newDay = day - 7;
 		if (newDay < 0)
 		{
-			newDay += daysInMonth[(month + 11) % 1];
+			newDay += daysInMonth[(month + 11) % 12];
 
 			if (month == 0)
 			{
