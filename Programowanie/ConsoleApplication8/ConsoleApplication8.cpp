@@ -1,5 +1,4 @@
 #include <iostream>
-#include <ctime>
 //zad 1
 class Count
 {
@@ -156,11 +155,15 @@ public:
 		this->day = day;
 	}
 
-	int GetMonth() { return month; }
+	int GetMonth()
+	{
+		return month;
+	}
 	void SetMonth(int month)
 	{
 		if (month > 11 || month < 0)
 			std::cerr << "wrong month";
+
 		this->month = month;
 	}
 
@@ -172,7 +175,9 @@ public:
 	{
 		if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
 			daysInMonth[1] = 29;
-		else daysInMonth[1] = 28;
+		else
+			daysInMonth[1] = 28;
+
 		this->year = year;
 	}
 
@@ -211,6 +216,7 @@ public:
 		}
 		SetDay(newDay);
 	}
+
 	void ShowInfo()
 	{
 		std::cout << day << "\n" << month + 1 << "\n" << year << "\n";
