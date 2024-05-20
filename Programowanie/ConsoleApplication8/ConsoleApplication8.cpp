@@ -188,7 +188,7 @@ public:
 		{
 			newDay -= daysInMonth[month];
 
-			if (month = 11)
+			if (month == 11)
 			{
 				SetMonth(0);
 				SetYear(year + 1);
@@ -204,15 +204,19 @@ public:
 		int newDay = day - 7;
 		if (newDay < 0)
 		{
-			newDay += daysInMonth[(month + 11) % 12];
 
 			if (month == 0)
 			{
+				newDay = daysInMonth[11] + newDay;
 				SetMonth(11);
 				SetYear(year - 1);
 			}
 			else
+			{
+				newDay = daysInMonth[month - 1] + newDay;
 				SetMonth(month - 1);
+
+			}
 		}
 		SetDay(newDay);
 	}
@@ -227,33 +231,33 @@ public:
 
 int main()
 {
-	Count c1;
-	c1.Add(1);
-	c1.Subtract(2);
-	Count c2(10);
-	c2.Add(1);
-	c2.Subtract(2);
 
-	Adder a1;
-	std::cout << a1.Amount() << "\n";
-	std::cout << a1.AmountDevideBy3() << "\n";
-	a1.ShowNumbers();
-	std::cout << "\n";
-	Adder a2(20);
-	a2.Amount();
-	a2.AmountDevideBy3();
-	a2.ShowNumbers();
 
-	Person KarolBakalarz("Karol", "Bakalarz", 15);
-	KarolBakalarz.ShowInfo();
-	Book b("Emil Rak i kamieñ nerkowy", KarolBakalarz, "11/09/2001");
-	b.ShowInfo();
+	Date d1(2, 1, 2024);
 
-	Date d1(30, 12, 2024);
-	d1.AddWeek();
-	d1.ShowInfo();
 	d1.SubtractWeek();
 	d1.ShowInfo();
 
 }
 
+//Count c1;
+//c1.Add(1);
+//c1.Subtract(2);
+//Count c2(10);
+//c2.Add(1);
+//c2.Subtract(2);
+
+//Adder a1;
+//std::cout << a1.Amount() << "\n";
+//std::cout << a1.AmountDevideBy3() << "\n";
+//a1.ShowNumbers();
+//std::cout << "\n";
+//Adder a2(20);
+//a2.Amount();
+//a2.AmountDevideBy3();
+//a2.ShowNumbers();
+
+//Person KarolBakalarz("Karol", "Bakalarz", 15);
+//KarolBakalarz.ShowInfo();
+//Book b("Emil Rak i kamieñ nerkowy", KarolBakalarz, "11/09/2001");
+//b.ShowInfo();
