@@ -202,7 +202,7 @@ public:
 	void SubtractWeek()
 	{
 		int newDay = day - 7;
-		if (newDay < 0)
+		if (newDay <= 0)
 		{
 
 			if (month == 0)
@@ -231,9 +231,7 @@ public:
 
 int main()
 {
-
-
-	Date d1(2, 1, 2024);
+	Date d1(8, 1, 2024);
 
 	d1.SubtractWeek();
 	d1.ShowInfo();
