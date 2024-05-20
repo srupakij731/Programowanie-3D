@@ -231,8 +231,9 @@ public:
 
 int main()
 {
-	Date d1(8, 1, 2024);
-
+	Date d1(29, 2, 2023);
+	d1.AddWeek();
+	d1.ShowInfo();
 	d1.SubtractWeek();
 	d1.ShowInfo();
 
