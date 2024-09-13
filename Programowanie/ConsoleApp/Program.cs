@@ -1,4 +1,5 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using System.Dynamic;
+using System.Reflection.Metadata.Ecma335;
 
 Console.WriteLine("aaaa");
 string stringi = "E-Mail";
@@ -15,5 +16,14 @@ void function(int x)
 {
     x += 1;
 }
+void function2(ref int x)
+{
+    x += 1;
+}
+void function3(out int x)
+{
+    x = 1;
+}
 function(number);
 Console.WriteLine(number);
+Console.ReadLine();
