@@ -27,3 +27,7 @@ void function3(out int x)
 function(number);
 Console.WriteLine(number);
 Console.ReadLine();
+string x = Console.ReadLine();
+int number2;
+if (int.TryParse(x, out number2)) ;
+Console.WriteLine($"2* więkrza podana liczba{number2}");
