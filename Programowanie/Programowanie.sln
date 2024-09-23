@@ -59,7 +59,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Podstawy", "01. Podstaw
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{623CFB40-69D0-42EF-ADBF-18ABE837B061}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{B0F578D3-32CC-46FA-ABBB-67F32317AA82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StructApp", "ConsoleApp1\StructApp.csproj", "{B0F578D3-32CC-46FA-ABBB-67F32317AA82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
