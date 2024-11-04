@@ -41,7 +41,7 @@ Console.WriteLine($"Najstarsza osoba ma: {people.Max(p => p.Age)}");
 Console.WriteLine($"Najmłodsza osoba ma: {people.Min(p => p.Age)}");
 Console.WriteLine($"Średni wiek to: {people.Average(p => p.Age)}");
 
-void WritePersons(List<Person> people)
+void WritePersons(List<Person> people) 
 {
     foreach (Person p in people)
         Console.WriteLine($"Imię: {p.Name} Nazwisko: {p.Surname} Wiek: {p.Age}");
