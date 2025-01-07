@@ -3,20 +3,16 @@
     private static void Main(string[] args)
     {
         int amountOfDices = GetAmountOfDices();
-        bool play = true;
-        Random r = new Random();
 
         while (true)
         {
-            int[] dicesTrown = new int[7];
+            int[] dices = new int[7];
+            dices = ThrowDices(dices, amountOfDices);
+            for (int i =0;i < 7;i++)
+                Console.WriteLine($"kostka {i + 1}: {dices[i]}");
 
-            for (int i = 0; i < amountOfDices; i++)
-            {
-                int thrownNumber = r.Next(1, 7);
-                dicesTrown[thrownNumber]++;
-                Console.WriteLine($"kostka {i+1}: {thrownNumber}");
-            }
-            Console.WriteLine(CalculateScore(dicesTrown));
+            Console.WriteLine(CalculateScore(dices));
+
             Console.WriteLine("Grać dalej t/n");
             string c = Console.ReadLine();
             if (c == "t")
@@ -28,12 +24,15 @@
 
     public static int GetAmountOfDices()
     {
-        Console.WriteLine("Podaj ilość kości");
-        int.TryParse(Console.ReadLine(), out int amountOfDices);
-        if (amountOfDices < 3 || amountOfDices > 10)
+        int amountOfDices;
+        do
+        {
+            Console.WriteLine("Podaj ilość kości");
+            amountOfDices = int.Parse(Console.ReadLine());
+        }
+        while (amountOfDices < 3 || amountOfDices > 10);
             return amountOfDices;
-        else
-            return amountOfDices;//XD
+
     }
 
     public static int CalculateScore(int[] dices)
@@ -45,5 +44,16 @@
                 score += i * dices[i];
         }
         return score;
+    }
+
+    public static int[] ThrowDices(int[] dicesTrown, int amountOfDices)
+    {
+        for (int i = 0; i < amountOfDices; i++)
+        {
+            Random r = new Random();
+            int thrownNumber = r.Next(1, 7);
+            dicesTrown[thrownNumber]++;
+        }
+        return dicesTrown;
     }
 }
