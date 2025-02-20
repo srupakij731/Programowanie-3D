@@ -1,7 +1,6 @@
 ﻿using static System.Math;
 StreamReader streamReader = new StreamReader("skrot_przyklad.txt");
 string num;
-streamReader.ReadLine();
 List<string> numbers = new List<string>();
 while ((num = streamReader.ReadLine()) != null)
 {
@@ -13,24 +12,11 @@ streamReader.Close();
 //3.2
 int total = 0;
 int max = 0;
-int ma2x = 0;
 
 foreach (string number in numbers)
 {
-    bool isGood = true;
-    int numberInt = int.Parse(number);
-    for (int i = 1; i <= number.Length; i++)
-    {
-        int n = numberInt % (int)Pow(10, i);
-        numberInt -= n;
-        n = n / (int)Pow(10, i - 1);
-        if(n == 1 || n==3 || n==5|| n== 7|| n==9)
-        {
-            isGood = false;
-            break;
-        }
-    }
-    if (isGood)
+
+    if (GetOddShortcut(number) == 0)
     {
         total++;
         if (int.Parse(number) > max)
@@ -39,3 +25,58 @@ foreach (string number in numbers)
 }
 Console.WriteLine(total);
 Console.WriteLine(max);
+
+//3.3
+StreamReader streamReader2 = new StreamReader("skrot2_przyklad.txt");
+string num2;
+List<string> numbers2 = new List<string>();
+while ((num2 = streamReader2.ReadLine()) != null)
+{
+    numbers2.Add(num2);
+}
+streamReader2.Close();
+
+
+
+foreach (string number in numbers2)
+{
+    if(GetNWW(int.Parse(number), GetOddShortcut(number)) == 7)
+    {
+        Console.WriteLine(number);
+    }
+}
+
+//
+int GetOddShortcut(string number)
+{
+    int oddShortcut = 0;
+    int numberInt = int.Parse(number);
+    int validLetters = 0;
+
+    while(numberInt > 0)
+    {
+        int n = numberInt % 10;
+        numberInt /= 10;
+
+        if (n % 2 == 1)
+        {
+            oddShortcut += n * (int)Math.Pow(10, validLetters);
+            validLetters++;
+        }
+    }
+
+    return oddShortcut;
+}
+
+int GetNWW(int number1, int number2)
+{
+    int rest;
+
+    while (number1 % number2 != 0)
+    {
+        rest = number1 % number2;
+        number1 = number2;
+        number2 = rest;
+    }
+    return number2;
+}
