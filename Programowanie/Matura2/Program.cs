@@ -1,6 +1,5 @@
 ﻿StreamReader streamReader = new StreamReader("przyklad.txt");
 string num;
-streamReader.ReadLine();
 List<string> numbers = new List<string>();
 while ((num = streamReader.ReadLine()) != null)
 {
@@ -8,7 +7,7 @@ while ((num = streamReader.ReadLine()) != null)
 }
 streamReader.Close();
 
-Console.WriteLine("4.1\n");
+Console.WriteLine("4.1");
 foreach (string number in numbers)
 {
 
@@ -20,7 +19,7 @@ foreach (string number in numbers)
 }
 
 Console.WriteLine("\n4.2");
-int highest = 0;
+string highest = "0";
 
 foreach (string number in numbers)
 {
@@ -29,7 +28,7 @@ foreach (string number in numbers)
     string sNumberReverse = reverse(number);
     int numberReverse = Math.Abs(int.Parse(sNumberReverse));
 
-    if (highest < (n - numberReverse))
+    if (int.Parse(highest) < (n - numberReverse))
     {
         highest = number;
     }
@@ -46,21 +45,18 @@ foreach(string number in numbers)
 }
 
 Console.WriteLine("\n4.4");
-int uniqueNumbers = 0;
 int twoNumbers = 0;
 int threeNumbers = 0;
 var numbersGrouped = numbers.GroupBy(n => n);
 
 foreach(var group in numbersGrouped)
 {
-    if(group.Count() == 1)
-        uniqueNumbers++;
     if(group.Count() == 2)
         twoNumbers++;
     if(group.Count() == 3)
         threeNumbers++;
 }
-Console.WriteLine(uniqueNumbers);
+Console.WriteLine(numbersGrouped.Count());
 Console.WriteLine(twoNumbers);
 Console.WriteLine(threeNumbers);
 
@@ -68,7 +64,7 @@ Console.WriteLine(threeNumbers);
 string reverse(string number)
 {
     string n ="";
-    for(int i = number.length-1; i >= 0; i--)
+    for(int i = number.Length-1; i >= 0; i--)
     {
         n += number[i];
     }
