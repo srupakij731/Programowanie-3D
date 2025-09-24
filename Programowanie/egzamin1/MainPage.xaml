@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="egzamin1.MainPage"
+             x:Name="thisPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25"
+            >
+            <Label Text="Podaj email"/>
+            <Entry Text="" x:Name="email"/>
+
+            <Label Text="Podaj hasło" />
+            <Entry x:Name="password1" IsPassword="True"/>
+
+            <Label Text="Powtórz hasło"/>
+            <Entry x:Name="password2" IsPassword="True"/>
+
+            <Button Text="Zatwierdź" Clicked="Button_Clicked"/>
+                <Label x:Name="result"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
