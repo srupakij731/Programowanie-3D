@@ -1,0 +1,27 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_2024_061.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+
+            <Button BackgroundColor="#D2691E" VerticalOptions="Center"
+                    TextColor="White" Text="Rzuć kości"
+                    Clicked="Roll"/>
+
+            <CollectionView ItemsSource="{Binding DiceImages}" ItemsLayout="HorizontalList" HorizontalOptions="Center">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding .}" WidthRequest="50" HeightRequest="50"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="{Binding Score, StringFormat='Wynik Tego Losowania: {0}'}" TextColor="Gray"/>
+
+            <Label Text="{Binding Total, StringFormat='Wynik gry: {0}'}" TextColor="Gray"/>
+
+            <Button BackgroundColor="#D2691E" Text="Resetuj wynik" TextColor="White" Clicked="Reset"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

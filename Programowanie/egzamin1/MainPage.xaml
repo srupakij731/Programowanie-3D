@@ -17,9 +17,9 @@
 
             <Label Text="Powtórz hasło"/>
             <Entry x:Name="password2" IsPassword="True"/>
-
-            <Button Text="Zatwierdź" Clicked="Button_Clicked"/>
-                <Label x:Name="result"/>
+                    
+            <Button Text="Zatwierdź" Clicked="Button_Clicked" HorizontalOptions="Center"/>
+            <Label x:Name="result" HorizontalOptions="Center">autor 128409</Label>
         </VerticalStackLayout>
     </ScrollView>
 

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="quiz.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Label
+                Text="Pytanie: "
+                x:Name="QuestionIdLabel"
+                 />
+            <Label
+                Text="sigma"
+                x:Name="QuestionLabel"
+                 />
+
+            <VerticalStackLayout x:Name="MainLayout" Padding="10" Spacing="10">
+                
+            </VerticalStackLayout>
+
+            <HorizontalStackLayout>
+            <Button
+                x:Name="CounterBtn"
+                Text="Następne pytanie" 
+                Clicked="OnNextQuestionClicked"
+                HorizontalOptions="Fill" />
+                <Button
+                x:Name="AnswerBtn"
+                Text="Wyślij" 
+                Clicked="OnAnswerSend"
+                HorizontalOptions="Fill" />
+            </HorizontalStackLayout>
+            <Label x:Name="CorrentAnswers" Text="Aktualna ilość poprawnych odpowiedzi: 0"></Label>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

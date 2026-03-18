@@ -11,16 +11,17 @@
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            if(password1.Text != password2.Text)
-            {
-                result.Text = "Hasła się nie zgadzają";
-                return;
-            }
-            if(!email.Text.Contains("@"))
+            if (!email.Text.Contains("@"))
             {
                 result.Text = "Zły e-mail";
                 return;
             }
+            if (password1.Text != password2.Text)
+            {
+                result.Text = "Hasła się nie zgadzają";
+                return;
+            }
+
             result.Text = "Witaj " + email.Text;
         }
     }
